@@ -17,9 +17,9 @@
     - ssl
     - expires
 
-- name: Apache | Adding user {{ name }}
+- name: Apache | Adding user "{{ username }}"
   user:
-    name: {{ name }}
+    name: "{{ username }}"
     uid: 1000
     groups: www-data
     append: yes
