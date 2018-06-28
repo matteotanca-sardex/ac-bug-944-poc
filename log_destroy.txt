@@ -1,43 +1,42 @@
-matteo@matteo-All-Series:~/projects/testing-bug/site2$ ansible-container --debug destroy
-2018-06-28T11:35:23.477149 Got extra args to `destroy` command [container.core] arguments={'with_volumes': [], 'with_variables': [], 'selinux': True, 'subcommand': 'destroy', 'devel': False, 'roles_path': [], 'volume_driver': None, 'production': False, 'debug': True} caller_file=/usr/local/lib/python2.7/dist-packages/container/core.py caller_func=hostcmd_destroy caller_line=271
-2018-06-28T11:35:23.483322 The default type is            [container.config] caller_file=/usr/local/lib/python2.7/dist-packages/container/config.py caller_func=_resolve_defaults caller_line=189 config=<class 'ruamel.yaml.comments.CommentedMap'> defaults=<type '_ordereddict.ordereddict'>
-2018-06-28T11:35:23.483876 Getting environment variables... [container.config] caller_file=/usr/local/lib/python2.7/dist-packages/container/config.py caller_func=_get_environment_variables caller_line=205
-2018-06-28T11:35:23.484473 Read environment variables     [container.config] caller_file=/usr/local/lib/python2.7/dist-packages/container/config.py caller_func=_get_environment_variables caller_line=210 env_vars={}
-2018-06-28T11:35:23.485014 Resolved template variables    [container.config] caller_file=/usr/local/lib/python2.7/dist-packages/container/config.py caller_func=_resolve_defaults caller_line=194 template_vars={}
-2018-06-28T11:35:23.485553 Parsed config                  [container.config] caller_file=/usr/local/lib/python2.7/dist-packages/container/config.py caller_func=set_env caller_line=148 config={"version": "2", "settings": {"conductor": {"base": "ubuntu:16.04"}, "project_name": "site2", "pwd": "/home/matteo/projects/testing-bug/site2"}, "services": {"web": {"from": "ubuntu:16.04", "roles": ["apache2"], "ports": ["127.0.0.1:80:80"]}}, "registries": {}, "defaults": {}}
-2018-06-28T11:35:23.490321 The default type is            [container.config] caller_file=/usr/local/lib/python2.7/dist-packages/container/config.py caller_func=_resolve_defaults caller_line=189 config=<class 'ruamel.yaml.comments.CommentedMap'> defaults=<type '_ordereddict.ordereddict'>
-2018-06-28T11:35:23.490882 Getting environment variables... [container.config] caller_file=/usr/local/lib/python2.7/dist-packages/container/config.py caller_func=_get_environment_variables caller_line=205
-2018-06-28T11:35:23.491483 Read environment variables     [container.config] caller_file=/usr/local/lib/python2.7/dist-packages/container/config.py caller_func=_get_environment_variables caller_line=210 env_vars={}
-2018-06-28T11:35:23.492082 Resolved template variables    [container.config] caller_file=/usr/local/lib/python2.7/dist-packages/container/config.py caller_func=_resolve_defaults caller_line=194 template_vars={}
-2018-06-28T11:35:23.492591 Parsed config                  [container.config] caller_file=/usr/local/lib/python2.7/dist-packages/container/config.py caller_func=set_env caller_line=148 config={"version": "2", "settings": {"conductor": {"base": "ubuntu:16.04"}, "project_name": "site2", "pwd": "/home/matteo/projects/testing-bug/site2"}, "services": {"web": {"from": "ubuntu:16.04", "roles": ["apache2"], "ports": ["127.0.0.1:80:80"]}}, "registries": {}, "defaults": {}}
-2018-06-28T11:35:23.493152 Loading engine capabilities    [container.utils.loader] caller_file=/usr/local/lib/python2.7/dist-packages/container/utils/loader.py caller_func=load_engine caller_line=14 capabilities=['RUN'] engine=docker
-2018-06-28T11:35:23.509065 Setting Docker client timeout to 60 [container.docker.engine] caller_file=/usr/local/lib/python2.7/dist-packages/container/docker/engine.py caller_func=get_timeout caller_line=122
-2018-06-28T11:35:23.516069 Could not find container for conductor [container.docker.engine] all_containers=[] caller_file=/usr/local/lib/python2.7/dist-packages/container/docker/engine.py caller_func=get_container_id_for_service caller_line=531 container=u'site2_conductor'
-2018-06-28T11:35:23.518037 Call: Engine.run_conductor     [container.docker.engine] args=('destroy', {'services': ordereddict([('web', ordereddict([('from', 'ubuntu:16.04'), ('roles', ['apache2']), ('ports', ['127.0.0.1:80:80'])]))]), 'version': '2', 'registries': ordereddict([]), 'defaults': ordereddict([]), 'settings': ordereddict([('conductor', ordereddict([('base', 'ubuntu:16.04')])), ('project_name', 'site2'), ('pwd', '/home/matteo/projects/testing-bug/site2')])}, '/home/matteo/projects/testing-bug/site2', {'with_volumes': [], 'settings': ordereddict([('conductor', ordereddict([('base', 'ubuntu:16.04')])), ('project_name', 'site2'), ('pwd', '/home/matteo/projects/testing-bug/site2')]), 'with_variables': [], 'selinux': True, 'subcommand': 'destroy', 'debug': True, 'devel': False, 'deployment_output_path': '/home/matteo/projects/testing-bug/site2/ansible-deployment', 'volume_driver': None, 'production': False, 'host_user_uid': 1000, 'host_user_gid': 1000, 'roles_path': []}) caller_file=/usr/local/lib/python2.7/dist-packages/container/docker/engine.py caller_func=Engine.run_conductor caller_line=23 kwargs={}
-2018-06-28T11:35:23.520651 Docker run:                    [container.docker.engine] caller_file=/usr/local/lib/python2.7/dist-packages/container/docker/engine.py caller_func=run_conductor caller_line=435 image=u'sha256:2dcad127b3711b319923a6bf57adb34a77a6d58c81d4c6cb1b65106e350163bb' params={'name': u'site2_conductor', 'cap_add': ['SYS_ADMIN'], 'environment': {'DOCKER_HOST': 'unix:///var/run/docker.sock', 'ANSIBLE_ROLES_PATH': '/src/roles:/etc/ansible/roles'}, 'working_dir': '/src', 'command': ['conductor', 'destroy', '--project-name', 'site2', '--engine', 'docker', '--params', u'eyJ3aXRoX3ZvbHVtZXMiOiBbXSwgInNldHRpbmdzIjogeyJjb25kdWN0b3IiOiB7ImJhc2UiOiAidWJ1bnR1OjE2LjA0In0sICJwcm9qZWN0X25hbWUiOiAic2l0ZTIiLCAicHdkIjogIi9ob21lL21hdHRlby9wcm9qZWN0cy90ZXN0aW5nLWJ1Zy9zaXRlMiJ9LCAid2l0aF92YXJpYWJsZXMiOiBbXSwgInNlbGludXgiOiB0cnVlLCAic3ViY29tbWFuZCI6ICJkZXN0cm95IiwgImRlYnVnIjogdHJ1ZSwgImRldmVsIjogZmFsc2UsICJkZXBsb3ltZW50X291dHB1dF9wYXRoIjogIi9ob21lL21hdHRlby9wcm9qZWN0cy90ZXN0aW5nLWJ1Zy9zaXRlMi9hbnNpYmxlLWRlcGxveW1lbnQiLCAidm9sdW1lX2RyaXZlciI6IG51bGwsICJwcm9kdWN0aW9uIjogZmFsc2UsICJob3N0X3VzZXJfdWlkIjogMTAwMCwgImhvc3RfdXNlcl9naWQiOiAxMDAwLCAicm9sZXNfcGF0aCI6IFtdfQ==', '--config', u'eyJzZXJ2aWNlcyI6IFtbIndlYiIsIHsiZnJvbSI6ICJ1YnVudHU6MTYuMDQiLCAicm9sZXMiOiBbImFwYWNoZTIiXSwgInBvcnRzIjogWyIxMjcuMC4wLjE6ODA6ODAiXX1dXSwgInNldHRpbmdzIjogW1siY29uZHVjdG9yIiwgeyJiYXNlIjogInVidW50dToxNi4wNCJ9XSwgWyJwcm9qZWN0X25hbWUiLCAic2l0ZTIiXSwgWyJwd2QiLCAiL2hvbWUvbWF0dGVvL3Byb2plY3RzL3Rlc3RpbmctYnVnL3NpdGUyIl1dLCAidmVyc2lvbiI6ICIyIiwgImRlZmF1bHRzIjogW10sICJyZWdpc3RyaWVzIjogW119', '--encoding', 'b64json'], 'user': 'root', 'volumes': {'/var/run/docker.sock': {'bind': '/var/run/docker.sock', 'mode': 'rw'}, '/home/matteo/projects/testing-bug/site2': {'bind': '/src', 'mode': 'ro'}, '/home/matteo/projects/testing-bug/site2/ansible-deployment': {'bind': '/home/matteo/projects/testing-bug/site2/ansible-deployment', 'mode': 'rw'}}, 'detach': True, 'privileged': True}
+matteo@matteo-All-Series:~/projects/ac-bug-944-poc/site2$ ansible-container --debug destroy
+2018-06-28T15:14:18.304941 Got extra args to `destroy` command [container.core] arguments={'with_volumes': [], 'with_variables': [], 'selinux': True, 'subcommand': 'destroy', 'devel': False, 'roles_path': [], 'volume_driver': None, 'production': False, 'debug': True} caller_file=/usr/local/lib/python2.7/dist-packages/container/core.py caller_func=hostcmd_destroy caller_line=271
+2018-06-28T15:14:18.311420 The default type is            [container.config] caller_file=/usr/local/lib/python2.7/dist-packages/container/config.py caller_func=_resolve_defaults caller_line=189 config=<class 'ruamel.yaml.comments.CommentedMap'> defaults=<type '_ordereddict.ordereddict'>
+2018-06-28T15:14:18.312011 Getting environment variables... [container.config] caller_file=/usr/local/lib/python2.7/dist-packages/container/config.py caller_func=_get_environment_variables caller_line=205
+2018-06-28T15:14:18.312630 Read environment variables     [container.config] caller_file=/usr/local/lib/python2.7/dist-packages/container/config.py caller_func=_get_environment_variables caller_line=210 env_vars={}
+2018-06-28T15:14:18.313194 Resolved template variables    [container.config] caller_file=/usr/local/lib/python2.7/dist-packages/container/config.py caller_func=_resolve_defaults caller_line=194 template_vars={}
+2018-06-28T15:14:18.313755 Parsed config                  [container.config] caller_file=/usr/local/lib/python2.7/dist-packages/container/config.py caller_func=set_env caller_line=148 config={"version": "2", "settings": {"conductor": {"base": "ubuntu:16.04", "environment": ["NAME=site2"]}, "project_name": "site2", "pwd": "/home/matteo/projects/ac-bug-944-poc/site2"}, "services": {"web": {"from": "ubuntu:16.04", "roles": ["apache2"], "ports": ["127.0.0.1:80:80"]}}, "registries": {}, "defaults": {}}
+2018-06-28T15:14:18.319014 The default type is            [container.config] caller_file=/usr/local/lib/python2.7/dist-packages/container/config.py caller_func=_resolve_defaults caller_line=189 config=<class 'ruamel.yaml.comments.CommentedMap'> defaults=<type '_ordereddict.ordereddict'>
+2018-06-28T15:14:18.319555 Getting environment variables... [container.config] caller_file=/usr/local/lib/python2.7/dist-packages/container/config.py caller_func=_get_environment_variables caller_line=205
+2018-06-28T15:14:18.320155 Read environment variables     [container.config] caller_file=/usr/local/lib/python2.7/dist-packages/container/config.py caller_func=_get_environment_variables caller_line=210 env_vars={}
+2018-06-28T15:14:18.320766 Resolved template variables    [container.config] caller_file=/usr/local/lib/python2.7/dist-packages/container/config.py caller_func=_resolve_defaults caller_line=194 template_vars={}
+2018-06-28T15:14:18.321362 Parsed config                  [container.config] caller_file=/usr/local/lib/python2.7/dist-packages/container/config.py caller_func=set_env caller_line=148 config={"version": "2", "settings": {"conductor": {"base": "ubuntu:16.04", "environment": ["NAME=site2"]}, "project_name": "site2", "pwd": "/home/matteo/projects/ac-bug-944-poc/site2"}, "services": {"web": {"from": "ubuntu:16.04", "roles": ["apache2"], "ports": ["127.0.0.1:80:80"]}}, "registries": {}, "defaults": {}}
+2018-06-28T15:14:18.321894 Loading engine capabilities    [container.utils.loader] caller_file=/usr/local/lib/python2.7/dist-packages/container/utils/loader.py caller_func=load_engine caller_line=14 capabilities=['RUN'] engine=docker
+2018-06-28T15:14:18.338003 Setting Docker client timeout to 60 [container.docker.engine] caller_file=/usr/local/lib/python2.7/dist-packages/container/docker/engine.py caller_func=get_timeout caller_line=122
+2018-06-28T15:14:18.344963 Could not find container for conductor [container.docker.engine] all_containers=[] caller_file=/usr/local/lib/python2.7/dist-packages/container/docker/engine.py caller_func=get_container_id_for_service caller_line=531 container=u'site2_conductor'
+2018-06-28T15:14:18.346917 Call: Engine.run_conductor     [container.docker.engine] args=('destroy', {'services': ordereddict([('web', ordereddict([('from', 'ubuntu:16.04'), ('roles', ['apache2']), ('ports', ['127.0.0.1:80:80'])]))]), 'version': '2', 'registries': ordereddict([]), 'defaults': ordereddict([]), 'settings': ordereddict([('conductor', ordereddict([('base', 'ubuntu:16.04'), ('environment', ['NAME=site2'])])), ('project_name', 'site2'), ('pwd', '/home/matteo/projects/ac-bug-944-poc/site2')])}, '/home/matteo/projects/ac-bug-944-poc/site2', {'with_volumes': [], 'settings': ordereddict([('conductor', ordereddict([('base', 'ubuntu:16.04'), ('environment', ['NAME=site2'])])), ('project_name', 'site2'), ('pwd', '/home/matteo/projects/ac-bug-944-poc/site2')]), 'with_variables': [], 'selinux': True, 'subcommand': 'destroy', 'debug': True, 'devel': False, 'deployment_output_path': '/home/matteo/projects/ac-bug-944-poc/site2/ansible-deployment', 'volume_driver': None, 'production': False, 'host_user_uid': 1000, 'host_user_gid': 1000, 'roles_path': []}) caller_file=/usr/local/lib/python2.7/dist-packages/container/docker/engine.py caller_func=Engine.run_conductor caller_line=23 kwargs={}
+2018-06-28T15:14:18.349633 Docker run:                    [container.docker.engine] caller_file=/usr/local/lib/python2.7/dist-packages/container/docker/engine.py caller_func=run_conductor caller_line=435 image=u'sha256:2ff15271b7de42e0cb8a215d0d20291bdd02e239447c93238429157912179692' params={'name': u'site2_conductor', 'cap_add': ['SYS_ADMIN'], 'environment': {'DOCKER_HOST': 'unix:///var/run/docker.sock', 'NAME': 'site2', 'ANSIBLE_ROLES_PATH': '/src/roles:/etc/ansible/roles'}, 'working_dir': '/src', 'command': ['conductor', 'destroy', '--project-name', 'site2', '--engine', 'docker', '--params', u'eyJ3aXRoX3ZvbHVtZXMiOiBbXSwgInNldHRpbmdzIjogeyJjb25kdWN0b3IiOiB7ImJhc2UiOiAidWJ1bnR1OjE2LjA0IiwgImVudmlyb25tZW50IjogWyJOQU1FPXNpdGUyIl19LCAicHJvamVjdF9uYW1lIjogInNpdGUyIiwgInB3ZCI6ICIvaG9tZS9tYXR0ZW8vcHJvamVjdHMvYWMtYnVnLTk0NC1wb2Mvc2l0ZTIifSwgIndpdGhfdmFyaWFibGVzIjogW10sICJzZWxpbnV4IjogdHJ1ZSwgInN1YmNvbW1hbmQiOiAiZGVzdHJveSIsICJkZWJ1ZyI6IHRydWUsICJkZXZlbCI6IGZhbHNlLCAiZGVwbG95bWVudF9vdXRwdXRfcGF0aCI6ICIvaG9tZS9tYXR0ZW8vcHJvamVjdHMvYWMtYnVnLTk0NC1wb2Mvc2l0ZTIvYW5zaWJsZS1kZXBsb3ltZW50IiwgInZvbHVtZV9kcml2ZXIiOiBudWxsLCAicHJvZHVjdGlvbiI6IGZhbHNlLCAiaG9zdF91c2VyX3VpZCI6IDEwMDAsICJob3N0X3VzZXJfZ2lkIjogMTAwMCwgInJvbGVzX3BhdGgiOiBbXX0=', '--config', u'eyJzZXJ2aWNlcyI6IFtbIndlYiIsIHsiZnJvbSI6ICJ1YnVudHU6MTYuMDQiLCAicm9sZXMiOiBbImFwYWNoZTIiXSwgInBvcnRzIjogWyIxMjcuMC4wLjE6ODA6ODAiXX1dXSwgInNldHRpbmdzIjogW1siY29uZHVjdG9yIiwgeyJiYXNlIjogInVidW50dToxNi4wNCIsICJlbnZpcm9ubWVudCI6IFsiTkFNRT1zaXRlMiJdfV0sIFsicHJvamVjdF9uYW1lIiwgInNpdGUyIl0sIFsicHdkIiwgIi9ob21lL21hdHRlby9wcm9qZWN0cy9hYy1idWctOTQ0LXBvYy9zaXRlMiJdXSwgInZlcnNpb24iOiAiMiIsICJkZWZhdWx0cyI6IFtdLCAicmVnaXN0cmllcyI6IFtdfQ==', '--encoding', 'b64json'], 'user': 'root', 'volumes': {'/home/matteo/projects/ac-bug-944-poc/site2/ansible-deployment': {'bind': '/home/matteo/projects/ac-bug-944-poc/site2/ansible-deployment', 'mode': 'rw'}, '/var/run/docker.sock': {'bind': '/var/run/docker.sock', 'mode': 'rw'}, '/home/matteo/projects/ac-bug-944-poc/site2': {'bind': '/src', 'mode': 'ro'}}, 'detach': True, 'privileged': True}
 Parsing conductor CLI args.
-2018-06-28T11:35:28.279085 Processing defaults section... [container.config] caller_file=/_ansible/container/config.py caller_func=_process_defaults caller_line=325
-2018-06-28T11:35:28.280893 Processing section...          [container.config] caller_file=/_ansible/container/config.py caller_func=_process_top_level_sections caller_line=334 section=volumes
-2018-06-28T11:35:28.283862 Processing section...          [container.config] caller_file=/_ansible/container/config.py caller_func=_process_top_level_sections caller_line=334 section=registries
-2018-06-28T11:35:28.285835 Processing section...          [container.config] caller_file=/_ansible/container/config.py caller_func=_process_top_level_sections caller_line=334 section=secrets
-2018-06-28T11:35:28.287892 Processing service...          [container.config] caller_file=/_ansible/container/config.py caller_func=_process_services caller_line=340 service=u'web' service_data={u'from': u'ubuntu:16.04', u'ports': [u'127.0.0.1:80:80'], u'roles': [u'apache2']}
-2018-06-28T11:35:28.291400 Rendering service keys from defaults [container.config] caller_file=/_ansible/container/config.py caller_func=_process_services caller_line=363 defaults={} service=u'web'
-2018-06-28T11:35:28.295147 Starting Ansible Container Conductor: destroy [container.cli] caller_file=/_ansible/container/cli.py caller_func=conductor_commandline caller_line=391 services={"web": {"from": "ubuntu:16.04", "ports": ["127.0.0.1:80:80"], "roles": ["apache2"], "defaults": {}}}
-2018-06-28T11:35:28.297244 Loading engine capabilities    [container.utils.loader] caller_file=/_ansible/container/utils/loader.py caller_func=load_engine caller_line=14 capabilities=['RUN'] engine=docker
-2018-06-28T11:35:28.311246 Engine integration loaded. Preparing to stop+delete all containers and built images. [container.core] caller_file=/_ansible/container/core.py caller_func=conductorcmd_destroy caller_line=892 engine=u'Docker\u2122 daemon'
-2018-06-28T11:35:28.318686 Setting Docker client timeout to 60 [container.docker.engine] caller_file=/_ansible/container/docker/engine.py caller_func=get_timeout caller_line=122
-2018-06-28T11:35:28.325222 Adding new service to definition [container.docker.engine] caller_file=/_ansible/container/docker/engine.py caller_func=generate_orchestration_playbook caller_line=760 definition={u'image': u'site1-web:20180628093435', 'ports': ['127.0.0.1:80:80']} service=u'web'
-2018-06-28T11:35:28.388320 Found image for service        [container.docker.engine] caller_file=/_ansible/container/docker/engine.py caller_func=generate_orchestration_playbook caller_line=815 id=u'sha256:091bb41de8' tags=[u'site1-web:20180628093435', u'site1-web:latest', u'site2-web:latest']
-2018-06-28T11:35:28.390428 Adding task to destroy image   [container.docker.engine] caller_file=/_ansible/container/docker/engine.py caller_func=generate_orchestration_playbook caller_line=817 tag=u'site1-web:20180628093435'
-2018-06-28T11:35:28.392226 Adding task to destroy image   [container.docker.engine] caller_file=/_ansible/container/docker/engine.py caller_func=generate_orchestration_playbook caller_line=817 tag=u'site1-web:latest'
-2018-06-28T11:35:28.394109 Adding task to destroy image   [container.docker.engine] caller_file=/_ansible/container/docker/engine.py caller_func=generate_orchestration_playbook caller_line=817 tag=u'site2-web:latest'
-2018-06-28T11:35:28.453319 Found image for service        [container.docker.engine] caller_file=/_ansible/container/docker/engine.py caller_func=generate_orchestration_playbook caller_line=815 id=u'sha256:2dcad127b3' tags=[u'site1-conductor:latest', u'site2-conductor:latest']
-2018-06-28T11:35:28.455420 Adding task to destroy image   [container.docker.engine] caller_file=/_ansible/container/docker/engine.py caller_func=generate_orchestration_playbook caller_line=817 tag=u'site1-conductor:latest'
-2018-06-28T11:35:28.457149 Adding task to destroy image   [container.docker.engine] caller_file=/_ansible/container/docker/engine.py caller_func=generate_orchestration_playbook caller_line=817 tag=u'site2-conductor:latest'
-2018-06-28T11:35:28.458887 Created playbook to run project [container.docker.engine] caller_file=/_ansible/container/docker/engine.py caller_func=generate_orchestration_playbook caller_line=830 playbook=[ordereddict([(u'name', 'Deploy site2'), (u'hosts', u'localhost'), (u'gather_facts', False), (u'tasks', [{u'docker_service': {u'definition': {u'services': {u'web': {u'image': u'site1-web:20180628093435', 'ports': ['127.0.0.1:80:80']}}, u'version': u'2'}, u'state': u'present', u'project_name': 'site2'}, u'tags': ['start']}, {u'docker_service': {u'definition': {u'services': {u'web': {u'image': u'site1-web:20180628093435', 'ports': ['127.0.0.1:80:80']}}, u'version': u'2'}, u'state': u'present', u'project_name': 'site2', u'restarted': True}, u'tags': ['restart']}, {u'docker_service': {u'definition': {u'services': {u'web': {u'image': u'site1-web:20180628093435', 'ports': ['127.0.0.1:80:80']}}, u'version': u'2'}, u'state': u'present', u'project_name': 'site2', u'stopped': True}, u'tags': ['stop']}, {u'docker_service': {u'definition': {u'services': {u'web': {u'image': u'site1-web:20180628093435', 'ports': ['127.0.0.1:80:80']}}, u'version': u'2'}, u'state': u'absent', u'project_name': 'site2', u'remove_volumes': u'yes'}, u'tags': ['destroy']}, {u'docker_image': {u'state': u'absent', u'force': u'yes', u'name': u'site1-web:20180628093435'}, u'tags': u'destroy'}, {u'docker_image': {u'state': u'absent', u'force': u'yes', u'name': u'site1-web:latest'}, u'tags': u'destroy'}, {u'docker_image': {u'state': u'absent', u'force': u'yes', u'name': u'site2-web:latest'}, u'tags': u'destroy'}, {u'docker_image': {u'state': u'absent', u'force': u'yes', u'name': u'site1-conductor:latest'}, u'tags': u'destroy'}, {u'docker_image': {u'state': u'absent', u'force': u'yes', u'name': u'site2-conductor:latest'}, u'tags': u'destroy'}])])]
-2018-06-28T11:35:28.461199 writing playbook to /home/matteo/projects/testing-bug/site2/ansible-deployment/playbook.yml [container.core] caller_file=/_ansible/container/core.py caller_func=run_playbook caller_line=551
-2018-06-28T11:35:28.462726 playbook                       [container.core] caller_file=/_ansible/container/core.py caller_func=run_playbook caller_line=552 playbook=[ordereddict([(u'name', 'Deploy site2'), (u'hosts', u'localhost'), (u'gather_facts', False), (u'tasks', [{u'docker_service': {u'definition': {u'services': {u'web': {u'image': u'site1-web:20180628093435', 'ports': ['127.0.0.1:80:80']}}, u'version': u'2'}, u'state': u'present', u'project_name': 'site2'}, u'tags': ['start']}, {u'docker_service': {u'definition': {u'services': {u'web': {u'image': u'site1-web:20180628093435', 'ports': ['127.0.0.1:80:80']}}, u'version': u'2'}, u'state': u'present', u'project_name': 'site2', u'restarted': True}, u'tags': ['restart']}, {u'docker_service': {u'definition': {u'services': {u'web': {u'image': u'site1-web:20180628093435', 'ports': ['127.0.0.1:80:80']}}, u'version': u'2'}, u'state': u'present', u'project_name': 'site2', u'stopped': True}, u'tags': ['stop']}, {u'docker_service': {u'definition': {u'services': {u'web': {u'image': u'site1-web:20180628093435', 'ports': ['127.0.0.1:80:80']}}, u'version': u'2'}, u'state': u'absent', u'project_name': 'site2', u'remove_volumes': u'yes'}, u'tags': ['destroy']}, {u'docker_image': {u'state': u'absent', u'force': u'yes', u'name': u'site1-web:20180628093435'}, u'tags': u'destroy'}, {u'docker_image': {u'state': u'absent', u'force': u'yes', u'name': u'site1-web:latest'}, u'tags': u'destroy'}, {u'docker_image': {u'state': u'absent', u'force': u'yes', u'name': u'site2-web:latest'}, u'tags': u'destroy'}, {u'docker_image': {u'state': u'absent', u'force': u'yes', u'name': u'site1-conductor:latest'}, u'tags': u'destroy'}, {u'docker_image': {u'state': u'absent', u'force': u'yes', u'name': u'site2-conductor:latest'}, u'tags': u'destroy'}])])]
-2018-06-28T11:35:28.480554 Running Ansible Playbook       [container.core] caller_file=/_ansible/container/core.py caller_func=run_playbook caller_line=621 command=ansible-playbook -vvvv  --tags=destroy  -i /home/matteo/projects/testing-bug/site2/ansible-deployment/hosts  -c local /home/matteo/projects/testing-bug/site2/ansible-deployment/playbook.yml  cwd=/src
+2018-06-28T15:14:23.271246 Processing defaults section... [container.config] caller_file=/_ansible/container/config.py caller_func=_process_defaults caller_line=325
+2018-06-28T15:14:23.272939 Processing section...          [container.config] caller_file=/_ansible/container/config.py caller_func=_process_top_level_sections caller_line=334 section=volumes
+2018-06-28T15:14:23.275940 Processing section...          [container.config] caller_file=/_ansible/container/config.py caller_func=_process_top_level_sections caller_line=334 section=registries
+2018-06-28T15:14:23.277975 Processing section...          [container.config] caller_file=/_ansible/container/config.py caller_func=_process_top_level_sections caller_line=334 section=secrets
+2018-06-28T15:14:23.279774 Processing service...          [container.config] caller_file=/_ansible/container/config.py caller_func=_process_services caller_line=340 service=u'web' service_data={u'from': u'ubuntu:16.04', u'ports': [u'127.0.0.1:80:80'], u'roles': [u'apache2']}
+2018-06-28T15:14:23.284368 Rendering service keys from defaults [container.config] caller_file=/_ansible/container/config.py caller_func=_process_services caller_line=363 defaults={"username": "{{ lookup('env','NAME') }}"} service=u'web'
+2018-06-28T15:14:23.287951 Starting Ansible Container Conductor: destroy [container.cli] caller_file=/_ansible/container/cli.py caller_func=conductor_commandline caller_line=391 services={"web": {"from": "ubuntu:16.04", "ports": ["127.0.0.1:80:80"], "roles": ["apache2"], "defaults": {"username": "{{ lookup('env','NAME') }}"}}}
+2018-06-28T15:14:23.290041 Loading engine capabilities    [container.utils.loader] caller_file=/_ansible/container/utils/loader.py caller_func=load_engine caller_line=14 capabilities=['RUN'] engine=docker
+2018-06-28T15:14:23.303920 Engine integration loaded. Preparing to stop+delete all containers and built images. [container.core] caller_file=/_ansible/container/core.py caller_func=conductorcmd_destroy caller_line=892 engine=u'Docker\u2122 daemon'
+2018-06-28T15:14:23.310817 Setting Docker client timeout to 60 [container.docker.engine] caller_file=/_ansible/container/docker/engine.py caller_func=get_timeout caller_line=122
+2018-06-28T15:14:23.318006 Adding new service to definition [container.docker.engine] caller_file=/_ansible/container/docker/engine.py caller_func=generate_orchestration_playbook caller_line=760 definition={u'image': u'site2-web:20180628131259', 'ports': ['127.0.0.1:80:80']} service=u'web'
+2018-06-28T15:14:23.358072 Found image for service        [container.docker.engine] caller_file=/_ansible/container/docker/engine.py caller_func=generate_orchestration_playbook caller_line=815 id=u'sha256:830cd83c0c' tags=[u'site2-web:20180628131259', u'site2-web:latest']
+2018-06-28T15:14:23.360247 Adding task to destroy image   [container.docker.engine] caller_file=/_ansible/container/docker/engine.py caller_func=generate_orchestration_playbook caller_line=817 tag=u'site2-web:20180628131259'
+2018-06-28T15:14:23.362101 Adding task to destroy image   [container.docker.engine] caller_file=/_ansible/container/docker/engine.py caller_func=generate_orchestration_playbook caller_line=817 tag=u'site2-web:latest'
+2018-06-28T15:14:23.397084 Found image for service        [container.docker.engine] caller_file=/_ansible/container/docker/engine.py caller_func=generate_orchestration_playbook caller_line=815 id=u'sha256:2ff15271b7' tags=[u'site1-conductor:latest', u'site2-conductor:latest']
+2018-06-28T15:14:23.399203 Adding task to destroy image   [container.docker.engine] caller_file=/_ansible/container/docker/engine.py caller_func=generate_orchestration_playbook caller_line=817 tag=u'site1-conductor:latest'
+2018-06-28T15:14:23.401423 Adding task to destroy image   [container.docker.engine] caller_file=/_ansible/container/docker/engine.py caller_func=generate_orchestration_playbook caller_line=817 tag=u'site2-conductor:latest'
+2018-06-28T15:14:23.403636 Created playbook to run project [container.docker.engine] caller_file=/_ansible/container/docker/engine.py caller_func=generate_orchestration_playbook caller_line=830 playbook=[ordereddict([(u'name', 'Deploy site2'), (u'hosts', u'localhost'), (u'gather_facts', False), (u'tasks', [{u'docker_service': {u'definition': {u'services': {u'web': {u'image': u'site2-web:20180628131259', 'ports': ['127.0.0.1:80:80']}}, u'version': u'2'}, u'state': u'present', u'project_name': 'site2'}, u'tags': ['start']}, {u'docker_service': {u'definition': {u'services': {u'web': {u'image': u'site2-web:20180628131259', 'ports': ['127.0.0.1:80:80']}}, u'version': u'2'}, u'state': u'present', u'project_name': 'site2', u'restarted': True}, u'tags': ['restart']}, {u'docker_service': {u'definition': {u'services': {u'web': {u'image': u'site2-web:20180628131259', 'ports': ['127.0.0.1:80:80']}}, u'version': u'2'}, u'state': u'present', u'project_name': 'site2', u'stopped': True}, u'tags': ['stop']}, {u'docker_service': {u'definition': {u'services': {u'web': {u'image': u'site2-web:20180628131259', 'ports': ['127.0.0.1:80:80']}}, u'version': u'2'}, u'state': u'absent', u'project_name': 'site2', u'remove_volumes': u'yes'}, u'tags': ['destroy']}, {u'docker_image': {u'state': u'absent', u'force': u'yes', u'name': u'site2-web:20180628131259'}, u'tags': u'destroy'}, {u'docker_image': {u'state': u'absent', u'force': u'yes', u'name': u'site2-web:latest'}, u'tags': u'destroy'}, {u'docker_image': {u'state': u'absent', u'force': u'yes', u'name': u'site1-conductor:latest'}, u'tags': u'destroy'}, {u'docker_image': {u'state': u'absent', u'force': u'yes', u'name': u'site2-conductor:latest'}, u'tags': u'destroy'}])])]
+2018-06-28T15:14:23.406518 writing playbook to /home/matteo/projects/ac-bug-944-poc/site2/ansible-deployment/playbook.yml [container.core] caller_file=/_ansible/container/core.py caller_func=run_playbook caller_line=551
+2018-06-28T15:14:23.408383 playbook                       [container.core] caller_file=/_ansible/container/core.py caller_func=run_playbook caller_line=552 playbook=[ordereddict([(u'name', 'Deploy site2'), (u'hosts', u'localhost'), (u'gather_facts', False), (u'tasks', [{u'docker_service': {u'definition': {u'services': {u'web': {u'image': u'site2-web:20180628131259', 'ports': ['127.0.0.1:80:80']}}, u'version': u'2'}, u'state': u'present', u'project_name': 'site2'}, u'tags': ['start']}, {u'docker_service': {u'definition': {u'services': {u'web': {u'image': u'site2-web:20180628131259', 'ports': ['127.0.0.1:80:80']}}, u'version': u'2'}, u'state': u'present', u'project_name': 'site2', u'restarted': True}, u'tags': ['restart']}, {u'docker_service': {u'definition': {u'services': {u'web': {u'image': u'site2-web:20180628131259', 'ports': ['127.0.0.1:80:80']}}, u'version': u'2'}, u'state': u'present', u'project_name': 'site2', u'stopped': True}, u'tags': ['stop']}, {u'docker_service': {u'definition': {u'services': {u'web': {u'image': u'site2-web:20180628131259', 'ports': ['127.0.0.1:80:80']}}, u'version': u'2'}, u'state': u'absent', u'project_name': 'site2', u'remove_volumes': u'yes'}, u'tags': ['destroy']}, {u'docker_image': {u'state': u'absent', u'force': u'yes', u'name': u'site2-web:20180628131259'}, u'tags': u'destroy'}, {u'docker_image': {u'state': u'absent', u'force': u'yes', u'name': u'site2-web:latest'}, u'tags': u'destroy'}, {u'docker_image': {u'state': u'absent', u'force': u'yes', u'name': u'site1-conductor:latest'}, u'tags': u'destroy'}, {u'docker_image': {u'state': u'absent', u'force': u'yes', u'name': u'site2-conductor:latest'}, u'tags': u'destroy'}])])]
+2018-06-28T15:14:23.428693 Running Ansible Playbook       [container.core] caller_file=/_ansible/container/core.py caller_func=run_playbook caller_line=621 command=ansible-playbook -vvvv  --tags=destroy  -i /home/matteo/projects/ac-bug-944-poc/site2/ansible-deployment/hosts  -c local /home/matteo/projects/ac-bug-944-poc/site2/ansible-deployment/playbook.yml  cwd=/src
 ansible-playbook 2.5.0
   config file = /src/ansible.cfg
   configured module search path = [u'/root/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
@@ -46,24 +45,40 @@ ansible-playbook 2.5.0
   python version = 2.7.12 (default, Nov 19 2016, 06:48:10) [GCC 5.4.0 20160609]
 Using /src/ansible.cfg as config file
 setting up inventory plugins
-Parsed /home/matteo/projects/testing-bug/site2/ansible-deployment/hosts inventory source with ini plugin
+ [WARNING]:  * Failed to parse /home/matteo/projects/ac-bug-944-poc/site2
+/ansible-deployment/hosts with ini plugin: /home/matteo/projects/ac-
+bug-944-poc/site2/ansible-deployment/hosts:1: Expected key=value host variable
+assignment, got: lookup(env,NAME)
+  File "/usr/local/lib/python2.7/dist-packages/ansible/plugins/inventory/ini.py", line 129, in parse
+    self._parse(path, data)
+  File "/usr/local/lib/python2.7/dist-packages/ansible/plugins/inventory/ini.py", line 208, in _parse
+    hosts, port, variables = self._parse_host_definition(line)
+  File "/usr/local/lib/python2.7/dist-packages/ansible/plugins/inventory/ini.py", line 303, in _parse_host_definition
+    self._raise_error("Expected key=value host variable assignment, got: %s" % (t))
+  File "/usr/local/lib/python2.7/dist-packages/ansible/plugins/inventory/ini.py", line 134, in _raise_error
+    raise AnsibleError("%s:%d: " % (self._filename, self.lineno) + message)
+ [WARNING]: Unable to parse /home/matteo/projects/ac-bug-944-poc/site2/ansible-
+deployment/hosts as an inventory source
+ [WARNING]: No inventory was parsed, only implicit localhost is available
+ [WARNING]: Could not match supplied host pattern, ignoring: all
+ [WARNING]: provided hosts list is empty, only localhost is available
 Loading callback plugin default of type stdout, v2.0 from /usr/local/lib/python2.7/dist-packages/ansible/plugins/callback/__init__.pyc
 
 PLAYBOOK: playbook.yml *********************************************************
-1 plays in /home/matteo/projects/testing-bug/site2/ansible-deployment/playbook.yml
+1 plays in /home/matteo/projects/ac-bug-944-poc/site2/ansible-deployment/playbook.yml
 
 PLAY [Deploy site2] ************************************************************
 META: ran handlers
 
 TASK [docker_service] **********************************************************
-task path: /home/matteo/projects/testing-bug/site2/ansible-deployment/playbook.yml:35
+task path: /home/matteo/projects/ac-bug-944-poc/site2/ansible-deployment/playbook.yml:35
 Using module file /usr/local/lib/python2.7/dist-packages/ansible/modules/cloud/docker/docker_service.py
 <127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: root
 <127.0.0.1> EXEC /bin/sh -c 'echo ~ && sleep 0'
-<127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1530178529.35-16099025682581 `" && echo ansible-tmp-1530178529.35-16099025682581="` echo /root/.ansible/tmp/ansible-tmp-1530178529.35-16099025682581 `" ) && sleep 0'
-<127.0.0.1> PUT /tmp/tmp6eG8v9 TO /root/.ansible/tmp/ansible-tmp-1530178529.35-16099025682581/docker_service.py
-<127.0.0.1> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1530178529.35-16099025682581/ /root/.ansible/tmp/ansible-tmp-1530178529.35-16099025682581/docker_service.py && sleep 0'
-<127.0.0.1> EXEC /bin/sh -c '/usr/bin/python /root/.ansible/tmp/ansible-tmp-1530178529.35-16099025682581/docker_service.py; rm -rf "/root/.ansible/tmp/ansible-tmp-1530178529.35-16099025682581/" > /dev/null 2>&1 && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1530191664.37-110792992828104 `" && echo ansible-tmp-1530191664.37-110792992828104="` echo /root/.ansible/tmp/ansible-tmp-1530191664.37-110792992828104 `" ) && sleep 0'
+<127.0.0.1> PUT /tmp/tmpVhLpfE TO /root/.ansible/tmp/ansible-tmp-1530191664.37-110792992828104/docker_service.py
+<127.0.0.1> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1530191664.37-110792992828104/ /root/.ansible/tmp/ansible-tmp-1530191664.37-110792992828104/docker_service.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '/usr/bin/python /root/.ansible/tmp/ansible-tmp-1530191664.37-110792992828104/docker_service.py; rm -rf "/root/.ansible/tmp/ansible-tmp-1530191664.37-110792992828104/" > /dev/null 2>&1 && sleep 0'
 ok: [localhost] => {
     "changed": false,
     "failed": false,
@@ -77,7 +92,7 @@ ok: [localhost] => {
             "definition": {
                 "services": {
                     "web": {
-                        "image": "site1-web:20180628093435",
+                        "image": "site2-web:20180628131259",
                         "ports": [
                             "127.0.0.1:80:80"
                         ]
@@ -114,17 +129,17 @@ ok: [localhost] => {
 }
 
 TASK [docker_image] ************************************************************
-task path: /home/matteo/projects/testing-bug/site2/ansible-deployment/playbook.yml:44
+task path: /home/matteo/projects/ac-bug-944-poc/site2/ansible-deployment/playbook.yml:44
 Using module file /usr/local/lib/python2.7/dist-packages/ansible/modules/cloud/docker/docker_image.py
 <127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: root
 <127.0.0.1> EXEC /bin/sh -c 'echo ~ && sleep 0'
-<127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1530178529.96-263912313056515 `" && echo ansible-tmp-1530178529.96-263912313056515="` echo /root/.ansible/tmp/ansible-tmp-1530178529.96-263912313056515 `" ) && sleep 0'
-<127.0.0.1> PUT /tmp/tmpQpWHtL TO /root/.ansible/tmp/ansible-tmp-1530178529.96-263912313056515/docker_image.py
-<127.0.0.1> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1530178529.96-263912313056515/ /root/.ansible/tmp/ansible-tmp-1530178529.96-263912313056515/docker_image.py && sleep 0'
-<127.0.0.1> EXEC /bin/sh -c '/usr/bin/python /root/.ansible/tmp/ansible-tmp-1530178529.96-263912313056515/docker_image.py; rm -rf "/root/.ansible/tmp/ansible-tmp-1530178529.96-263912313056515/" > /dev/null 2>&1 && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1530191664.99-137603520115207 `" && echo ansible-tmp-1530191664.99-137603520115207="` echo /root/.ansible/tmp/ansible-tmp-1530191664.99-137603520115207 `" ) && sleep 0'
+<127.0.0.1> PUT /tmp/tmp2X26U6 TO /root/.ansible/tmp/ansible-tmp-1530191664.99-137603520115207/docker_image.py
+<127.0.0.1> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1530191664.99-137603520115207/ /root/.ansible/tmp/ansible-tmp-1530191664.99-137603520115207/docker_image.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '/usr/bin/python /root/.ansible/tmp/ansible-tmp-1530191664.99-137603520115207/docker_image.py; rm -rf "/root/.ansible/tmp/ansible-tmp-1530191664.99-137603520115207/" > /dev/null 2>&1 && sleep 0'
 changed: [localhost] => {
     "actions": [
-        "Removed image site1-web:20180628093435"
+        "Removed image site2-web:20180628131259"
     ],
     "changed": true,
     "failed": false,
@@ -147,7 +162,7 @@ changed: [localhost] => {
             "http_timeout": null,
             "key_path": null,
             "load_path": null,
-            "name": "site1-web:20180628093435",
+            "name": "site2-web:20180628131259",
             "nocache": false,
             "path": null,
             "pull": true,
@@ -167,67 +182,14 @@ changed: [localhost] => {
 }
 
 TASK [docker_image] ************************************************************
-task path: /home/matteo/projects/testing-bug/site2/ansible-deployment/playbook.yml:49
+task path: /home/matteo/projects/ac-bug-944-poc/site2/ansible-deployment/playbook.yml:49
 Using module file /usr/local/lib/python2.7/dist-packages/ansible/modules/cloud/docker/docker_image.py
 <127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: root
 <127.0.0.1> EXEC /bin/sh -c 'echo ~ && sleep 0'
-<127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1530178530.2-213176741277803 `" && echo ansible-tmp-1530178530.2-213176741277803="` echo /root/.ansible/tmp/ansible-tmp-1530178530.2-213176741277803 `" ) && sleep 0'
-<127.0.0.1> PUT /tmp/tmpR8wPxr TO /root/.ansible/tmp/ansible-tmp-1530178530.2-213176741277803/docker_image.py
-<127.0.0.1> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1530178530.2-213176741277803/ /root/.ansible/tmp/ansible-tmp-1530178530.2-213176741277803/docker_image.py && sleep 0'
-<127.0.0.1> EXEC /bin/sh -c '/usr/bin/python /root/.ansible/tmp/ansible-tmp-1530178530.2-213176741277803/docker_image.py; rm -rf "/root/.ansible/tmp/ansible-tmp-1530178530.2-213176741277803/" > /dev/null 2>&1 && sleep 0'
-changed: [localhost] => {
-    "actions": [
-        "Removed image site1-web:latest"
-    ],
-    "changed": true,
-    "failed": false,
-    "image": {
-        "state": "Deleted"
-    },
-    "invocation": {
-        "module_args": {
-            "api_version": null,
-            "archive_path": null,
-            "buildargs": null,
-            "cacert_path": null,
-            "cert_path": null,
-            "container_limits": null,
-            "debug": false,
-            "docker_host": null,
-            "dockerfile": null,
-            "filter_logger": false,
-            "force": true,
-            "http_timeout": null,
-            "key_path": null,
-            "load_path": null,
-            "name": "site1-web:latest",
-            "nocache": false,
-            "path": null,
-            "pull": true,
-            "push": false,
-            "repository": null,
-            "rm": true,
-            "ssl_version": null,
-            "state": "absent",
-            "tag": "latest",
-            "timeout": null,
-            "tls": null,
-            "tls_hostname": null,
-            "tls_verify": null,
-            "use_tls": "no"
-        }
-    }
-}
-
-TASK [docker_image] ************************************************************
-task path: /home/matteo/projects/testing-bug/site2/ansible-deployment/playbook.yml:54
-Using module file /usr/local/lib/python2.7/dist-packages/ansible/modules/cloud/docker/docker_image.py
-<127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: root
-<127.0.0.1> EXEC /bin/sh -c 'echo ~ && sleep 0'
-<127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1530178530.45-209865002300870 `" && echo ansible-tmp-1530178530.45-209865002300870="` echo /root/.ansible/tmp/ansible-tmp-1530178530.45-209865002300870 `" ) && sleep 0'
-<127.0.0.1> PUT /tmp/tmpChcDLT TO /root/.ansible/tmp/ansible-tmp-1530178530.45-209865002300870/docker_image.py
-<127.0.0.1> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1530178530.45-209865002300870/ /root/.ansible/tmp/ansible-tmp-1530178530.45-209865002300870/docker_image.py && sleep 0'
-<127.0.0.1> EXEC /bin/sh -c '/usr/bin/python /root/.ansible/tmp/ansible-tmp-1530178530.45-209865002300870/docker_image.py; rm -rf "/root/.ansible/tmp/ansible-tmp-1530178530.45-209865002300870/" > /dev/null 2>&1 && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1530191665.22-10874563623279 `" && echo ansible-tmp-1530191665.22-10874563623279="` echo /root/.ansible/tmp/ansible-tmp-1530191665.22-10874563623279 `" ) && sleep 0'
+<127.0.0.1> PUT /tmp/tmp6Mo97S TO /root/.ansible/tmp/ansible-tmp-1530191665.22-10874563623279/docker_image.py
+<127.0.0.1> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1530191665.22-10874563623279/ /root/.ansible/tmp/ansible-tmp-1530191665.22-10874563623279/docker_image.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '/usr/bin/python /root/.ansible/tmp/ansible-tmp-1530191665.22-10874563623279/docker_image.py; rm -rf "/root/.ansible/tmp/ansible-tmp-1530191665.22-10874563623279/" > /dev/null 2>&1 && sleep 0'
 changed: [localhost] => {
     "actions": [
         "Removed image site2-web:latest"
@@ -273,14 +235,14 @@ changed: [localhost] => {
 }
 
 TASK [docker_image] ************************************************************
-task path: /home/matteo/projects/testing-bug/site2/ansible-deployment/playbook.yml:59
+task path: /home/matteo/projects/ac-bug-944-poc/site2/ansible-deployment/playbook.yml:54
 Using module file /usr/local/lib/python2.7/dist-packages/ansible/modules/cloud/docker/docker_image.py
 <127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: root
 <127.0.0.1> EXEC /bin/sh -c 'echo ~ && sleep 0'
-<127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1530178530.76-26067811020037 `" && echo ansible-tmp-1530178530.76-26067811020037="` echo /root/.ansible/tmp/ansible-tmp-1530178530.76-26067811020037 `" ) && sleep 0'
-<127.0.0.1> PUT /tmp/tmpvMoGGW TO /root/.ansible/tmp/ansible-tmp-1530178530.76-26067811020037/docker_image.py
-<127.0.0.1> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1530178530.76-26067811020037/ /root/.ansible/tmp/ansible-tmp-1530178530.76-26067811020037/docker_image.py && sleep 0'
-<127.0.0.1> EXEC /bin/sh -c '/usr/bin/python /root/.ansible/tmp/ansible-tmp-1530178530.76-26067811020037/docker_image.py; rm -rf "/root/.ansible/tmp/ansible-tmp-1530178530.76-26067811020037/" > /dev/null 2>&1 && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1530191665.52-246347740231966 `" && echo ansible-tmp-1530191665.52-246347740231966="` echo /root/.ansible/tmp/ansible-tmp-1530191665.52-246347740231966 `" ) && sleep 0'
+<127.0.0.1> PUT /tmp/tmpGaa0TM TO /root/.ansible/tmp/ansible-tmp-1530191665.52-246347740231966/docker_image.py
+<127.0.0.1> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1530191665.52-246347740231966/ /root/.ansible/tmp/ansible-tmp-1530191665.52-246347740231966/docker_image.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '/usr/bin/python /root/.ansible/tmp/ansible-tmp-1530191665.52-246347740231966/docker_image.py; rm -rf "/root/.ansible/tmp/ansible-tmp-1530191665.52-246347740231966/" > /dev/null 2>&1 && sleep 0'
 changed: [localhost] => {
     "actions": [
         "Removed image site1-conductor:latest"
@@ -326,14 +288,14 @@ changed: [localhost] => {
 }
 
 TASK [docker_image] ************************************************************
-task path: /home/matteo/projects/testing-bug/site2/ansible-deployment/playbook.yml:64
+task path: /home/matteo/projects/ac-bug-944-poc/site2/ansible-deployment/playbook.yml:59
 Using module file /usr/local/lib/python2.7/dist-packages/ansible/modules/cloud/docker/docker_image.py
 <127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: root
 <127.0.0.1> EXEC /bin/sh -c 'echo ~ && sleep 0'
-<127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1530178531.0-216378016423509 `" && echo ansible-tmp-1530178531.0-216378016423509="` echo /root/.ansible/tmp/ansible-tmp-1530178531.0-216378016423509 `" ) && sleep 0'
-<127.0.0.1> PUT /tmp/tmpyzLyf0 TO /root/.ansible/tmp/ansible-tmp-1530178531.0-216378016423509/docker_image.py
-<127.0.0.1> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1530178531.0-216378016423509/ /root/.ansible/tmp/ansible-tmp-1530178531.0-216378016423509/docker_image.py && sleep 0'
-<127.0.0.1> EXEC /bin/sh -c '/usr/bin/python /root/.ansible/tmp/ansible-tmp-1530178531.0-216378016423509/docker_image.py; rm -rf "/root/.ansible/tmp/ansible-tmp-1530178531.0-216378016423509/" > /dev/null 2>&1 && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /root/.ansible/tmp/ansible-tmp-1530191665.74-272366380961341 `" && echo ansible-tmp-1530191665.74-272366380961341="` echo /root/.ansible/tmp/ansible-tmp-1530191665.74-272366380961341 `" ) && sleep 0'
+<127.0.0.1> PUT /tmp/tmpF79YJk TO /root/.ansible/tmp/ansible-tmp-1530191665.74-272366380961341/docker_image.py
+<127.0.0.1> EXEC /bin/sh -c 'chmod u+x /root/.ansible/tmp/ansible-tmp-1530191665.74-272366380961341/ /root/.ansible/tmp/ansible-tmp-1530191665.74-272366380961341/docker_image.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '/usr/bin/python /root/.ansible/tmp/ansible-tmp-1530191665.74-272366380961341/docker_image.py; rm -rf "/root/.ansible/tmp/ansible-tmp-1530191665.74-272366380961341/" > /dev/null 2>&1 && sleep 0'
 changed: [localhost] => {
     "actions": [
         "Removed image site2-conductor:latest"
@@ -381,8 +343,7 @@ META: ran handlers
 META: ran handlers
 
 PLAY RECAP *********************************************************************
-localhost                  : ok=6    changed=5    unreachable=0    failed=0
+localhost                  : ok=5    changed=4    unreachable=0    failed=0
 
-2018-06-28T11:35:31.257976 All services destroyed.        [container.core] caller_file=/_ansible/container/core.py caller_func=conductorcmd_destroy caller_line=899 playbook_rc=0
-2018-06-28T11:35:31.539983 Conductor terminated. Cleaning up. [container.docker.engine] caller_file=/usr/local/lib/python2.7/dist-packages/container/docker/engine.py caller_func=await_conductor_command caller_line=462 command_rc=0 conductor_id=u'508c08f58cc031173db652d6d0fa9a6b0b36a41c0bf2e95c7a88557729b42a22' save_container=False
-
+2018-06-28T15:14:25.994053 All services destroyed.        [container.core] caller_file=/_ansible/container/core.py caller_func=conductorcmd_destroy caller_line=899 playbook_rc=0
+2018-06-28T15:14:26.286781 Conductor terminated. Cleaning up. [container.docker.engine] caller_file=/usr/local/lib/python2.7/dist-packages/container/docker/engine.py caller_func=await_conductor_command caller_line=462 command_rc=0 conductor_id=u'babfa770355dc96a5db105fdc5645b77f4467fa2033807780782421ee6d96b2a' save_container=False
