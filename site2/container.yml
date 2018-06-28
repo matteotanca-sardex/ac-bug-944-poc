@@ -3,6 +3,8 @@ settings:
 
   conductor:
     base: ubuntu:16.04
+    environment:  
+      - NAME=site2
 
   project_name: site2
 

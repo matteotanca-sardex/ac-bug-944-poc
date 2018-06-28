@@ -1,0 +1,1 @@
+web ansible_host="ordereddict([(u'from', u'ubuntu:16.04'), (u'ports', ['127.0.0.1:80:80']), (u'roles', ['apache2']), ('defaults', ordereddict([]))])" ansible_python_interpreter="/_usr/bin/python"

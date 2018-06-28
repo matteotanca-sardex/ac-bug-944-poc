@@ -1,0 +1,68 @@
+  - name: Deploy site2
+    hosts: localhost
+    gather_facts: false
+    tasks:
+      - docker_service:
+            definition:
+                services: &id001
+                    web:
+                        image: site1-web:20180628093435
+                        ports:
+                          - 127.0.0.1:80:80
+                version: '2'
+            state: present
+            project_name: site2
+        tags:
+          - start
+      - docker_service:
+            definition:
+                services: *id001
+                version: '2'
+            state: present
+            project_name: site2
+            restarted: true
+        tags:
+          - restart
+      - docker_service:
+            definition:
+                services: *id001
+                version: '2'
+            state: present
+            project_name: site2
+            stopped: true
+        tags:
+          - stop
+      - docker_service:
+            definition:
+                services: *id001
+                version: '2'
+            state: absent
+            project_name: site2
+            remove_volumes: yes
+        tags:
+          - destroy
+      - docker_image:
+            state: absent
+            force: yes
+            name: site1-web:20180628093435
+        tags: destroy
+      - docker_image:
+            state: absent
+            force: yes
+            name: site1-web:latest
+        tags: destroy
+      - docker_image:
+            state: absent
+            force: yes
+            name: site2-web:latest
+        tags: destroy
+      - docker_image:
+            state: absent
+            force: yes
+            name: site1-conductor:latest
+        tags: destroy
+      - docker_image:
+            state: absent
+            force: yes
+            name: site2-conductor:latest
+        tags: destroy

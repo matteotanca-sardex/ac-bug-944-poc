@@ -1,0 +1,4 @@
+---
+# roles/apache2/defaults/main.yml
+
+name: "{{ lookup('env','NAME') }}"
