@@ -1,0 +1,25 @@
+---
+# roles/apache2/tasks/main.yml
+
+- name: Apache | Adding user 1000
+  user:
+    name: user
+    uid: 1000
+    groups: www-data
+    append: yes
+
+- name: Apache | Install apache packages
+  action: >
+    {{ ansible_pkg_mgr }} name={{ item }} state=present update_cache=yes
+  with_items:
+    - apache2
+
+- name: Apache | Enable apache2 modules
+  apache2_module:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - headers
+    - rewrite
+    - ssl
+    - expires

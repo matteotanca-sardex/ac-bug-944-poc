@@ -1,0 +1,16 @@
+version: "2"
+settings:
+
+  conductor:
+    base: ubuntu:16.04
+
+  project_name: site1
+
+services:
+  web:
+    from: ubuntu:16.04
+    roles:
+      - apache2
+    ports:
+      - "127.0.0.1:80:80"
+registries: {}
